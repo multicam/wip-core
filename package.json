@@ -1,0 +1,35 @@
+{
+  "name": "wip-core",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "svelte-kit dev",
+    "build": "svelte-kit build",
+    "package": "svelte-kit package",
+    "preview": "svelte-kit preview",
+    "prepare": "svelte-kit sync",
+    "check": "svelte-check --tsconfig ./jsconfig.json",
+    "check:watch": "svelte-check --tsconfig ./jsconfig.json --watch",
+    "update": "yarn upgrade-interactive ; yarn"
+  },
+  "devDependencies": {
+    "@coreui/coreui": "^4.1.5",
+    "@coreui/icons": "^2.1.0",
+    "@playwright/test": "^1.22.2",
+    "@popperjs/core": "^2.11.5",
+    "@sveltejs/adapter-auto": "^1.0.0-next.50",
+    "@sveltejs/kit": "^1.0.0-next.347",
+    "@sveltejs/svelte-virtual-list": "^3.0.1",
+    "autoprefixer": "^10.4.7",
+    "postcss": "^8.4.14",
+    "postcss-load-config": "^4.0.1",
+    "prettier": "^2.6.2",
+    "prettier-plugin-svelte": "^2.7.0",
+    "simplebar": "^5.3.8",
+    "svelte": "^3.48.0",
+    "svelte-check": "^2.7.1",
+    "svelte-preprocess": "^4.10.6",
+    "tailwindcss": "^3.0.24",
+    "typescript": "~4.7.2"
+  },
+  "type": "module"
+}
