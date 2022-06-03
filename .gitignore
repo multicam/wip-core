@@ -10,3 +10,4 @@ node_modules
 .pnp.*
 yarn.lock
 .yarn
+package-lock.json
