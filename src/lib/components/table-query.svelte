@@ -1,8 +1,8 @@
 <script>
-  import {onMount} from "svelte";
   import {fetcher} from '../utils'
-  import VirtualList from '@sveltejs/svelte-virtual-list';
   import {useQuery} from '@sveltestack/svelte-query';
+  import VirtualList from '@sveltejs/svelte-virtual-list';
+  import Row from '$lib/components/table-row-factory.svelte'
 
   const {log} = console, {keys} = Object, {stringify, parse} = JSON
 
@@ -15,7 +15,6 @@
 <style>
 
     section {
-        @apply font-mono;
         @apply text-xs;
     }
 </style>
@@ -25,7 +24,7 @@
 <section class="relative flex-1 overflow-auto">
     {#if $res.status === 'success' }
         <VirtualList items={$res.data} bind:start bind:end let:item>
-            <div>{stringify(item)}</div>
+            <Row type={type} item={item} />
         </VirtualList>
     {/if}
 </section>

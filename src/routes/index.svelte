@@ -1,5 +1,5 @@
 <script>
-    import Table from '../lib/components/table-query.svelte'
+    import Table from '$lib/components/table-query.svelte'
 </script>
 <Table
     type="crm"
