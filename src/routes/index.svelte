@@ -3,5 +3,6 @@
 </script>
 <Table
     type="crm"
+    filter="persons"
     uri="http://jmbox.local:5050/v1/crm/persons"
 />
