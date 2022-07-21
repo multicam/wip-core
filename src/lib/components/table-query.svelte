@@ -6,15 +6,14 @@
 
   const {log} = console, {keys} = Object, {stringify, parse} = JSON
 
-  export let type, uri
+  export let name = 'some_query_key', type, uri, debug
   let start, end, data
 
-  const res = useQuery('crmPersons', () => fetcher(uri) )
+  const res = useQuery(name, () => fetcher(uri) )
 
 </script>
 <style>
-
-    section {
+    pre, section {
         @apply text-xs;
     }
 </style>
@@ -22,10 +21,12 @@
     <pre>{$res.status}</pre>
 </header>
 <section class="relative flex-1 overflow-auto">
-    {#if $res.status === 'success' }
+    {#if $res.status === 'success' && $res.data?.length }
         <VirtualList items={$res.data} bind:start bind:end let:item>
-            <Row type={type} item={item} />
+            <Row type={type} item={item} debug />
         </VirtualList>
+    {:else}
+        <pre>{stringify($res,null,2)}</pre>
     {/if}
 </section>
-<footer>{type}: {uri}</footer>
+<footer>{type} -- {uri}</footer>

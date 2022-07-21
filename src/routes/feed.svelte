@@ -2,7 +2,8 @@
   import Table from '$lib/components/table-query.svelte'
 </script>
 <Table
-        type="crm"
+        type="emails"
         filter="persons"
-        uri="http://jmbox.local:5050/v1/crm/persons"
+        uri="http://localhost:3011/feed/2022-07-20"
+        debug=true
 />
