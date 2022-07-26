@@ -14,3 +14,7 @@ export const fetcher = async uri => {
   log(uri, res.status, res.ok)
   return res.ok && res.json()
 }
+
+export const whoami = () => {
+  log('me')
+}

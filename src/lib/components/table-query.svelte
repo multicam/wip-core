@@ -10,7 +10,7 @@
   let start, end, data
 
   const res = useQuery(name, () => fetcher(uri) )
-
+  const splat = obj => obj
 </script>
 <style>
     pre, section {
@@ -23,7 +23,7 @@
 <section class="relative flex-1 overflow-auto">
     {#if $res.status === 'success' && $res.data?.length }
         <VirtualList items={$res.data} bind:start bind:end let:item>
-            <Row type={type} item={item} debug />
+            <Row type={type} item={splat(item)} debug />
         </VirtualList>
     {:else}
         <pre>{stringify($res,null,2)}</pre>

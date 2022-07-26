@@ -1,5 +1,6 @@
 <script>
   import '../app.css'
+  import {QueryClientProvider} from "@sveltestack/svelte-query";
 </script>
 <style>
     :global(body > div) {
@@ -9,4 +10,6 @@
         flex-direction: column;
     }
 </style>
-<slot/>
+<QueryClientProvider>
+    <slot/>
+</QueryClientProvider>
