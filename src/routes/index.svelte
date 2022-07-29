@@ -4,7 +4,7 @@
   import {whoami} from '$lib/utils'
   import InputText from '$lib/components/input_text.svelte'
 
-  const {log} = console, {stringify} = JSON, {keys} = Object
+  const {log} = console, {stringify, parse} = JSON, {keys} = Object
 
   const users = []
 
@@ -40,26 +40,34 @@
 
   const fetchUser2 = async uid => {
     const res = await fetch(`http://jmbox.local:7379/15/GET/${uid}:general`)
-    log('==', await res.json())
+    const json = await res.json()
+    return parse(json.GET)
   }
 
+  whoami()
   browser && installSubscriber('hello')
   // fetchUsersActive().then(log)
 
-  whoami()
-
+    let temp
   fetchUser(10).then(log)
-  fetchUser2(10).then(log)
+  fetchUser2(10).then(res => {
+    temp = res
+  })
+  fetchOther().then(log)
+
+
   let search, db_search
 
 </script>
 <header class="flex justify-between">
     <InputText bind:value={search} class="flex-1"/>
+    <div class="bold">{search ?? ''}</div>
     <InputText bind:value={db_search} class="flex-1"/>
+    <div class="bold text-xs">{db_search ?? ''}</div>
 
 </header>
 <section class="relative flex-1 overflow-auto bg-neutral-200">
-    <div>
+    <div class="text-xs">
         <!--{#if $ql.isLoading}-->
         <!--    <span>Loading...</span>-->
         <!--{:else if $ql.error}-->
@@ -67,6 +75,8 @@
         <!--{:else}-->
         <!--    <pre class="text-xs ">{stringify($ql.data, null, 2)}</pre>-->
         <!--{/if}-->
+
+        <pre>{stringify(temp,null,2)}</pre>
     </div>
 </section>
 <footer class="flex justify-between">

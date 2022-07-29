@@ -19,6 +19,5 @@
             w-full
           "
         placeholder="let it rip..."
-        autocomplete="off"
         bind:value={value}
 >
