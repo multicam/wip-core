@@ -6,8 +6,10 @@
     :global(body > div) {
         height: 100vh;
         overflow: hidden;
-        display: flex;
-        flex-direction: column;
+
+        @apply flex;
+        @apply flex-col;
+        @apply text-gray-800;
     }
 </style>
 <QueryClientProvider>

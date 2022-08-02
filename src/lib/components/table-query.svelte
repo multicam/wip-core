@@ -9,7 +9,7 @@
   export let name = 'some_query_key', type, uri, debug
   let start, end, data
 
-  const res = useQuery(name, () => fetcher(uri) )
+  const res = useQuery(name, () => fetcher(uri))
   const splat = obj => obj
 </script>
 <style>
@@ -20,13 +20,16 @@
 <header>
     <pre>{$res.status}</pre>
 </header>
-<section class="relative flex-1 overflow-auto">
-    {#if $res.status === 'success' && $res.data?.length }
-        <VirtualList items={$res.data} bind:start bind:end let:item>
-            <Row type={type} item={splat(item)} debug />
-        </VirtualList>
-    {:else}
-        <pre>{stringify($res,null,2)}</pre>
-    {/if}
+<section class="flex flex-1 relative overflow-auto">
+    <div class="flex-1 h-full">
+        {#if $res.status === 'success' && $res.data?.length }
+            <VirtualList items={$res.data} bind:start bind:end let:item>
+                <Row type={type} item={splat(item)} />
+            </VirtualList>
+        {:else}
+            <pre>{stringify($res, null, 2)}</pre>
+        {/if}
+    </div>
+    <div>something</div>
 </section>
 <footer>{type} -- {uri}</footer>

@@ -37,7 +37,6 @@
     }
   }
 
-
   const fetchUser2 = async uid => {
     const res = await fetch(`http://jmbox.local:7379/15/GET/${uid}:general`)
     const json = await res.json()
@@ -53,7 +52,7 @@
   fetchUser2(10).then(res => {
     temp = res
   })
-  fetchOther().then(log)
+  // fetchOther().then(log)
 
 
   let search, db_search
